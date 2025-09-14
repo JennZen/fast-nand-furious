@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MainActivity"
+    android:id="@+id/main"
+    >
+
+    <!-- Контейнер для карты с возможностью раскрытия -->
+    <FrameLayout
+        android:id="@+id/map_container"
+        android:layout_width="300dp"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/map_container_background"
+        android:elevation="8dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Карта Google Maps -->
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MapsActivity" />
+
+        <!-- Кнопка раскрытия карты -->
+        <ImageButton
+            android:id="@+id/expand_map_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_expand"
+            android:background="@drawable/round_button_background"
+            android:contentDescription="Expand map" />
+
+    </FrameLayout>
+
+    <!-- Верхняя панель с иконками -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Иконка загруженности трафика (левый верхний угол) -->
+        <ImageButton
+            android:id="@+id/traffic_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_traffic"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Traffic" />
+
+        <!-- Пространство между кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Иконка геолокации (центр верха) -->
+        <ImageButton
+            android:id="@+id/location_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_my_location"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="My location" />
+
+        <!-- Пространство между кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Иконка без функционала (правый верхний угол) -->
+        <ImageButton
+            android:id="@+id/placeholder_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_placeholder"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Placeholder" />
+
+    </LinearLayout>
+
+    <!-- Круг для отслеживания колебаний (в нижней трети экрана) -->
+    <FrameLayout
+        android:id="@+id/vibration_circle"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/camera_button"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/circle_background"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="monitoring road surface changes"
+            android:textColor="@android:color/white"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+    </FrameLayout>
+
+    <!-- Нижняя кнопка для фото -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_camera"
+        app:backgroundTint="#2196F3"
+        app:maxImageSize="48dp" />
+
+</RelativeLayout>
